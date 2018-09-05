@@ -1,18 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package coladeimpresion;
 
+import java.awt.Image;
 import java.io.*;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
-/**
- *
- * @author alejo
- */
+
 public class FrmColaImpresion extends javax.swing.JFrame {
-
+  //Definir Variables a utilizar en diferentes procesos.
     Cola<String> cola = new Cola();
     String[] items = new String[4];
     Nodo<String> nodo;
@@ -21,9 +17,13 @@ public class FrmColaImpresion extends javax.swing.JFrame {
      * Creates new form FrmColaImpresion
      */
     public FrmColaImpresion() {
-
         initComponents();
-        JpImprimiendo.setVisible(true);
+      
+        ImageIcon imagen= new ImageIcon("src/Archivos/init.jpg");
+        Icon icono= new ImageIcon(imagen.getImage().getScaledInstance(lblImagen.getWidth(),lblImagen.getHeight(),Image.SCALE_DEFAULT));
+        lblImagen.setIcon(icono);
+        this.repaint();
+        JpImprimiendo.setVisible(false);
     }
 
     /**
@@ -40,69 +40,51 @@ public class FrmColaImpresion extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         Jlbl = new javax.swing.JLabel();
         lblFile = new java.awt.Label();
-        jPanel3 = new javax.swing.JPanel();
         BtnCargarDatos = new javax.swing.JButton();
         BtnIniciarSimulacion = new javax.swing.JButton();
         BtnSalir = new javax.swing.JButton();
         label1 = new java.awt.Label();
-        lblList = new java.awt.Label();
+        lblList = new javax.swing.JLabel();
+        lblImagen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.darkGray, new java.awt.Color(51, 51, 51), new java.awt.Color(0, 0, 0), new java.awt.Color(51, 51, 51)));
 
         JpImprimiendo.setBackground(new java.awt.Color(255, 255, 255));
-        JpImprimiendo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.white, java.awt.Color.black, java.awt.Color.white));
+        JpImprimiendo.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 153, 153)));
         JpImprimiendo.setEnabled(false);
         JpImprimiendo.setPreferredSize(new java.awt.Dimension(185, 158));
         JpImprimiendo.setVisible(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Imprimiendo...");
 
+        Jlbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Jlbl.setText("Espere...");
         Jlbl.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         lblFile.setAlignment(java.awt.Label.CENTER);
-        lblFile.setText("................");
 
         javax.swing.GroupLayout JpImprimiendoLayout = new javax.swing.GroupLayout(JpImprimiendo);
         JpImprimiendo.setLayout(JpImprimiendoLayout);
         JpImprimiendoLayout.setHorizontalGroup(
             JpImprimiendoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JpImprimiendoLayout.createSequentialGroup()
-                .addGroup(JpImprimiendoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(JpImprimiendoLayout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel1))
-                    .addGroup(JpImprimiendoLayout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(Jlbl)))
-                .addContainerGap(56, Short.MAX_VALUE))
             .addComponent(lblFile, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+            .addComponent(Jlbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JpImprimiendoLayout.setVerticalGroup(
             JpImprimiendoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JpImprimiendoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
                 .addComponent(lblFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(Jlbl)
                 .addGap(29, 29, 29))
-        );
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 248, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         BtnCargarDatos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -141,28 +123,32 @@ public class FrmColaImpresion extends javax.swing.JFrame {
         label1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         label1.setText("Simulación de una Cola de Impresión");
 
+        lblList.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(JpImprimiendo, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(116, 116, 116)
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(25, 25, 25)
                 .addComponent(BtnCargarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addGap(100, 100, 100)
                 .addComponent(BtnIniciarSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(118, 118, 118)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BtnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(lblList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JpImprimiendo, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,16 +157,21 @@ public class FrmColaImpresion extends javax.swing.JFrame {
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(JpImprimiendo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(lblList, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnCargarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnIniciarSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JpImprimiendo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblList, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(BtnCargarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BtnIniciarSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(BtnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -216,46 +207,58 @@ public class FrmColaImpresion extends javax.swing.JFrame {
         }
         return cadena;
     }
+  //Boton Salir
     private void BtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_BtnSalirActionPerformed
-
+//Boton Cargar Datos (Archivo .txt a utilizar)
     private void BtnCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCargarDatosActionPerformed
         String cadena = getString("src/Archivos/spool.txt");
         System.out.println("spool.text = " + cadena);
         items = cadena.split(";");
         updateCola();
-        System.out.println(" ===== Tamño de la cola: " + cola.getSize() + " =====");
+        System.out.println(" ===== Tamaño de la cola: " + cola.getSize() + " =====");
+      
+        BtnIniciarSimulacion.setEnabled(true);
+        BtnCargarDatos.setEnabled(false);
+        JpImprimiendo.setVisible(true);
     }//GEN-LAST:event_BtnCargarDatosActionPerformed
 
     private void updateCola() {
-        lblList.setText("");
         String str = "";
         for (int i = 0; i < items.length; i++) {
 //          System.out.print((i + 1) + ". " + items[i].substring(0, items[i].indexOf(",")) + " = " + items[i].substring(items[i].indexOf(",") + 1) + "\n");
             cola.enqueue((i + 1) + ". " + items[i].substring(0, items[i].indexOf(",")));
-            str += ((i + 1) + ". " + items[i].substring(0, items[i].indexOf(",")) + "\r\n");
-            System.out.println(str);
+            str += ((i + 1) + ". " + items[i].substring(0, items[i].indexOf(",")) + "<br><br>");
         }
-        lblList.setText("");
-        javax.swing.JOptionPane.showMessageDialog(null, "<html><p style='color:blue;'>Hola Es<br>Stackoverflow</p></html>"); //mensaje simple
+        lblList.setText("<html>" + str + "<html>");
         cola.display();
+        System.out.println("coladeimpresion.FrmColaImpresion.updateCola()");
+  //  javax.swing.JOptionPane.showMessageDialog(null, "<html><p style='color:blue;'>Hola Es<br>Stackoverflow</p></html>"); //mensaje simple
+    
     }
 
     private void BtnIniciarSimulacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnIniciarSimulacionActionPerformed
+      
         for (String item : items) {
             nodo = cola.dequeue();
             lblFile.setText(nodo.getValor());
             System.out.println("|------------------------------------|");
             esperar(Integer.parseInt(item.substring(item.indexOf(",") + 1)));
             System.out.println("------------------------------------");
-            esperar(5);
+            esperar(1);
             System.out.println("|------------------------------------|");
         }
         lblFile.setText("No hay archivos en cola");
+        BtnIniciarSimulacion.setEnabled(false);
         System.out.println(" ===== Tamño de la cola: " + cola.getSize() + " =====");
+        esperar(1);
+        lblFile.setText("................");
+        lblList.setText("");
+        JpImprimiendo.setVisible(false);
+        BtnCargarDatos.setEnabled(true);
     }//GEN-LAST:event_BtnIniciarSimulacionActionPerformed
-
+// Esperar despues de tanto tiempo para que se vuelva al proceso 
     public void esperar(int segundos) {
         try {
             Thread.sleep(segundos * 1000);
@@ -265,7 +268,7 @@ public class FrmColaImpresion extends javax.swing.JFrame {
         }
     }
     private void BtnIniciarSimulacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnIniciarSimulacionMouseClicked
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_BtnIniciarSimulacionMouseClicked
 
     /**
@@ -288,9 +291,9 @@ public class FrmColaImpresion extends javax.swing.JFrame {
     private javax.swing.JPanel JpImprimiendo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     private java.awt.Label label1;
     private java.awt.Label lblFile;
-    private java.awt.Label lblList;
+    private javax.swing.JLabel lblImagen;
+    private javax.swing.JLabel lblList;
     // End of variables declaration//GEN-END:variables
 }
